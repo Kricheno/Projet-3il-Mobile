@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Salle {{dataReceived}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="onClick()">
+        <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="onClick()">
+        <ion-icon slot="end" name="power-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <div padding>
+    <ion-item>
+      <ion-searchbar showCancelButton="never"></ion-searchbar>
+    </ion-item>
+  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let poste of postes; let i = index">
+        <ion-card text-center padding color="light" href="details">
+          <ion-card-header>
+            <ion-icon name="people-circle-outline" size="large" ></ion-icon>
+            <ion-card-title>Poste N° : {{i+1}}</ion-card-title>
+            <ion-card-title>IP:{{poste.adresse_IP}}</ion-card-title>
+            <div  *ngIf="!poste.etat">
+
+            <ion-card-title>(éteinte)</ion-card-title>
+</div>
+            <ion-card-subtitle *ngFor="let materiel of poste.materiels">
+              <ion-chip outline color="secondary" *ngIf="materiel.etat == 0">
+                <ion-icon name="information-circle"></ion-icon>
+                <ion-label>{{materiel.nom}} Non détecté</ion-label>
+              </ion-chip>
+            </ion-card-subtitle>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>

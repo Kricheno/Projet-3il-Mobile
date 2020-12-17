@@ -1,0 +1,16 @@
+div {
+  margin-left: auto;
+  margin-right: auto;
+}
+ion-card-header {
+  vertical-align: middle;
+  padding-bottom: 3px;
+}
+ion-label {
+  display: flex !important;
+  align-items: center;
+}
+ion-label ion-icon {
+  height: 100%;
+  margin-right: 5px;
+}
